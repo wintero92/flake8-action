@@ -1,0 +1,18 @@
+name: Flake8 Linter for Python
+description: Run flake8 linter on given target or default.
+
+inputs:
+  target:
+    description: Target for flake8 scan.
+    required: false
+    default: src/
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Flake8
+      shell: bash
+      run: |
+        source .venv/bin/activate
+        flake8 ${{inputs.target}}
